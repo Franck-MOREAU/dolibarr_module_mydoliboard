@@ -29,7 +29,7 @@ require_once DOL_DOCUMENT_ROOT.'/core/class/html.formother.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/date.lib.php';
 
-require_once DOL_DOCUMENT_ROOT.'/mydoliboard/class/mydoliboard.class.php';
+dol_include_once('/mydoliboard/class/mydoliboard.class.php');
 
 
 $socid=GETPOST('socid','int');
@@ -53,7 +53,7 @@ $module='mydoliboardstatic';
 
 if (! empty($user->societe_id))
 	$socid=$user->societe_id;
-	
+
 if (! empty($socid))
 {
 	$objectid=$socid;
@@ -77,7 +77,7 @@ $idreftab=GETPOST('id');
 $mydoliboardstatic->idreftab=$idreftab;
 if (!empty($mydoliboardstatic->elementtab) && $idreftab != "")
 {
-	
+
 	$form = new Form($db);
 	llxHeader();
 	switch($mydoliboardstatic->elementtab) {
@@ -129,7 +129,7 @@ if (!empty($mydoliboardstatic->elementtab) && $idreftab != "")
 			$result = $objecttab->fetch($idreftab);
 			$head = product_prepare_head($objecttab, $user);
 			dol_fiche_head($head, 'mydoliboard_'.$mydoliboardstatic->id, $langs->trans("Product"), 0, 'product');
-			
+
 			print '<form method="POST" action="'.$_SERVER['PHP_SELF'].'">';
 			print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
 			print '<table class="border" width="100%">';
@@ -186,11 +186,11 @@ if (!empty($mydoliboardstatic->elementtab) && $idreftab != "")
 			print '<tr><td width="20%" class="notopnoleft">';
 			print $langs->trans("Description").'</td><td>';
 			print nl2br($objecttab->description);
-			print '</td></tr>';		
+			print '</td></tr>';
 
 			print '</table><br>';
 			break;
-			
+
 		case 'CategSociete' :
 			require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
 			require_once DOL_DOCUMENT_ROOT.'/core/lib/categories.lib.php';
@@ -221,7 +221,7 @@ if (!empty($mydoliboardstatic->elementtab) && $idreftab != "")
 			print '<tr><td width="20%" class="notopnoleft">';
 			print $langs->trans("Description").'</td><td>';
 			print nl2br($objecttab->description);
-			print '</td></tr>';		
+			print '</td></tr>';
 
 			print '</table><br>';
 			break;
@@ -241,7 +241,7 @@ $now=dol_now();
 
 
 $param='&idboard='.$pageid;
-// ajout des filtres 
+// ajout des filtres
 $param.=$mydoliboardstatic->GenParamFilterInitFields();
 print_barre_liste($mydoliboardstatic->label , $page, $_SERVER["PHP_SELF"],$param, $sortfield, $sortorder, '', $num);
 

@@ -28,7 +28,7 @@ if (! $res && file_exists("../../../main.inc.php")) $res=@include("../../../main
 
 
 require_once DOL_DOCUMENT_ROOT.'/core/lib/admin.lib.php';
-require_once DOL_DOCUMENT_ROOT.'/mydoliboard/core/lib/mydoliboard.lib.php';
+dol_include_once('/mydoliboard/core/lib/mydoliboard.lib.php');
 
 $langs->load("admin");
 $langs->load("mydoliboard@mydoliboard");
