@@ -25,16 +25,16 @@
 function mydoliboard_admin_prepare_head ()
 {
 	global $langs, $conf, $user;
-	
+
 	$h = 0;
 	$head = array();
-	
-	$head[$h][0] = DOL_URL_ROOT.'/mydoliboard/admin/admin.php';
+
+	$head[$h][0] = dol_buildpath('/mydoliboard/admin/admin.php');
 	$head[$h][1] = $langs->trans("Setup");
 	$head[$h][2] = 'admin';
-	
+
 	$h++;
-	$head[$h][0] = DOL_URL_ROOT.'/mydoliboard/admin/about.php';
+	$head[$h][0] = dol_buildpath('/mydoliboard/admin/about.php');
 	$head[$h][1] = $langs->trans("About");
 	$head[$h][2] = 'about';
 
@@ -56,7 +56,7 @@ function select_mdbpage($selected='',$htmlname='fk_mdbpage',$showempty=0,$hidete
 
 	if (empty($hidetext)) print $langs->trans("doliboardPage").': ';
 
-	// boucle sur les entrepots 
+	// boucle sur les entrepots
 	$sql = "SELECT rowid, label";
 	$sql.= " FROM ".MAIN_DB_PREFIX."mydoliboard";
 
@@ -88,7 +88,7 @@ function select_mdbpage($selected='',$htmlname='fk_mdbpage',$showempty=0,$hidete
 		}
 		else
 		{
-			// si pas de liste, on positionne un hidden à vide
+			// si pas de liste, on positionne un hidden ï¿½ vide
 			print '<input type="hidden" name="'.$htmlname.'" value=-1>';
 		}
 	}
@@ -152,7 +152,7 @@ function select_blocmode($htmlname='blocAmode', $selected='')
 	return $sz;
 }
 
-// générate the list of sheet in a box
+// gï¿½nï¿½rate the list of sheet in a box
 function blocsheet($pageid, $listsUsed, $cellsheet)
 {
 	global $langs;
@@ -186,7 +186,7 @@ function blocsheet($pageid, $listsUsed, $cellsheet)
 			$sz.= "</tr>\n";
 		}
 	}
-	$sz.="</tbody></table><br>\n";	
+	$sz.="</tbody></table><br>\n";
 	return $sz;
 }
 ?>

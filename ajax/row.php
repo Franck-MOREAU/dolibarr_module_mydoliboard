@@ -28,10 +28,11 @@ if (! defined('NOREQUIREAJAX'))  define('NOREQUIREAJAX','1');
 if (! defined('NOREQUIRESOC'))   define('NOREQUIRESOC','1');
 if (! defined('NOREQUIRETRAN'))  define('NOREQUIRETRAN','1');
 
-$res=@include("../main.inc.php");                    // For root directory
-if (! $res && file_exists($_SERVER['DOCUMENT_ROOT']."/main.inc.php"))
-    $res=@include($_SERVER['DOCUMENT_ROOT']."/main.inc.php"); // Use on dev env only
-if (! $res) $res=@include("../../main.inc.php");        // For "custom" directory
+$res = @include '../../main.inc.php'; // For root directory
+if (! $res)
+	$res = @include '../../../main.inc.php'; // For "custom" directory
+if (! $res)
+	die("Include of main fails");
 
 dol_include_once('/mydoliboard/class/mydoliboard.class.php');
 

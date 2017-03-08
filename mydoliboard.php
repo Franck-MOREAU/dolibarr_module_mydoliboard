@@ -21,10 +21,11 @@
  *	\brief      	Page d'affichage du tableau de bord
  */
 
-$res=@include("../main.inc.php");                    // For root directory
-if (! $res && file_exists($_SERVER['DOCUMENT_ROOT']."/main.inc.php"))
-    $res=@include($_SERVER['DOCUMENT_ROOT']."/main.inc.php"); // Use on dev env only
-if (! $res) $res=@include("../../main.inc.php");        // For "custom" directory
+$res = @include '../../main.inc.php'; // For root directory
+if (! $res)
+	$res = @include '../../../main.inc.php'; // For "custom" directory
+if (! $res)
+	die("Include of main fails");       // For "custom" directory
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formother.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/date.lib.php';

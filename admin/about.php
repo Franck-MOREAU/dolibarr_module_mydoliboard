@@ -22,9 +22,11 @@
  */
 
 // Dolibarr environment
-$res=0;
-if (! $res && file_exists("../../main.inc.php")) $res=@include("../../main.inc.php");		// For root directory
-if (! $res && file_exists("../../../main.inc.php")) $res=@include("../../../main.inc.php");	// For "custom" directory
+$res = @include '../../main.inc.php'; // For root directory
+if (! $res)
+	$res = @include '../../../main.inc.php'; // For "custom" directory
+if (! $res)
+	die("Include of main fails");
 
 
 // Libraries
@@ -56,7 +58,7 @@ print '<br>';
 print $langs->trans("PatasMonkeyPresent").'<br><br>';
 
 $url='http://www.patas-monkey.com';
-print '<a href="'.$url.'" target="_blank"><img border="0" width="180" src="'.DOL_URL_ROOT.'/mydoliboard/img/patas-monkey_logo.png"></a>';
+print '<a href="'.$url.'" target="_blank"><img border="0" width="180" src="'.dol_buildpath('/mydoliboard/img/patas-monkey_logo.png').'"></a>';
 
 
 print '<br><br>';
