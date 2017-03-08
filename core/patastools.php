@@ -25,7 +25,7 @@
 
 global $langs;
 
-$res=@include("../main.inc.php");                    // For root directory
+$res=@include("../../main.inc.php");                    // For root directory
 if (! $res && file_exists($_SERVER['DOCUMENT_ROOT']."/main.inc.php"))
 	$res=@include($_SERVER['DOCUMENT_ROOT']."/main.inc.php"); // Use on dev env only
 	if (! $res) $res=@include("../../main.inc.php");
