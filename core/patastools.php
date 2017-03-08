@@ -23,8 +23,6 @@
  *       \brief      Home page for top menu tools
  */
 
-global $langs;
-
 $res=@include("../../main.inc.php");                    // For root directory
 if (! $res && file_exists($_SERVER['DOCUMENT_ROOT']."/main.inc.php"))
 	$res=@include($_SERVER['DOCUMENT_ROOT']."/main.inc.php"); // Use on dev env only
